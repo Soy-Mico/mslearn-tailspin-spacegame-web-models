@@ -35,9 +35,13 @@ steps:
     arguments: '--no-build --configuration $(buildConfiguration)'
     versioningScheme: byPrereleaseNumber
     majorVersion: '1'
-    minorVersion: '0'
+    minorVersion: '1'
     patchVersion: '0'
  
+- script: |
+    echo Feed Path: $(System.TeamProject)/Tailspin.SpaceGame.DomainModel
+  displayName: 'Display feed path'
+
 #Pushes the package to your Tailspin.SpaceGame.Web.Models Azure Artifacts feed    
 - task: NuGetCommand@2
   displayName: 'Publish NuGet package'
