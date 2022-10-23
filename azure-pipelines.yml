@@ -24,6 +24,9 @@ steps:
     arguments: '--no-restore --configuration $(buildConfiguration)'
     projects: '**/*.csproj'
 
+#byPrereleaseNumber versioning scheme. 
+#This appends a unique pre-release suffix, such as "-CI-20190621-042647" to the end of the version number. 
+#Following this example, the complete version number would be "1.0.0-CI-20190621-042647"    
 - task: DotNetCoreCLI@2
   displayName: 'Pack the project - $(buildConfiguration)'
   inputs:
@@ -35,6 +38,7 @@ steps:
     minorVersion: '0'
     patchVersion: '0'
  
+#Pushes the package to your Tailspin.SpaceGame.Web.Models Azure Artifacts feed    
 - task: NuGetCommand@2
   displayName: 'Publish NuGet package'
   inputs:
